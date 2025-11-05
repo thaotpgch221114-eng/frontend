@@ -33,8 +33,7 @@
 <script>
 import axios from "axios";
 
-// 1. Sửa backendAPI trỏ đến /product/api
-var backendAPI = "http://localhost:3000/product/api";
+var backendAPI = import.meta.env.VITE_APP_API_URL;
 
 export default {
   data() {
@@ -47,7 +46,7 @@ export default {
   },
   methods: {
     fetchProducts() {
-      // Sẽ gọi: GET http://localhost:3000/product/api
+      // Sẽ gọi: GET (đến địa chỉ trong biến VITE_APP_API_URL)
       axios
         .get(backendAPI)
         .then((response) => {
@@ -60,8 +59,7 @@ export default {
     deleteProduct(id) {
       const confirmed = confirm("Are you sure to delete this product?");
       if (confirmed) {
-        // 2. Sửa đường dẫn delete để gọi /api/delete/:id
-        // Sẽ gọi: DELETE http://localhost:3000/product/api/delete/[id]
+        // Sẽ gọi: DELETE (đến địa chỉ trong biến VITE_APP_API_URL)
         axios
           .delete(backendAPI + "/delete/" + id)
           .then(() => {
