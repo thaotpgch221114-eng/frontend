@@ -17,7 +17,7 @@
           <td>{{ product.name }}</td>
           <td>${{ product.price }}</td>
           <td>
-            <img :src="'http://localhost:3000' + product.imageUrl" width="100" />
+            <img :src="backendAPI.replace('/product/api', '') + product.imageUrl" width="100" />
           </td>
           <td>
             <button @click="deleteProduct(product._id)" class="btn orange">
